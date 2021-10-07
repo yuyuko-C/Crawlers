@@ -58,6 +58,8 @@ class UpsCrawler:
                     global cookies
                     cookies =res.cookies
                     return csrf_token
+                else:
+                    raise ValueError('not found CSRFToken.')
         
         data['CSRFToken'] = await get_csrf_token(session)
         async with session.post(login_url,data=data,headers=headers,cookies=cookies) as res:

@@ -3,8 +3,8 @@ import os
 import encodings.idna
 import aiohttp
 
-from tools.upscrawler.pdfmaker import PdfMaker
-from tools.upscrawler.upscrawler import UpsCrawler
+from tools.ups.pdfmaker import PdfMaker
+from tools.ups.upscrawler import UpsCrawler
 
 
 async def flow(user_id:str, password:str, trackingNumber:str):
@@ -35,6 +35,7 @@ if path_str != '.':
         userId=content[0].replace('userId:','').strip()
         password=content[1].replace('password:','').strip()
         trackings=content[3:]
+        # trackings=[trackings[0]]
         
         tasks=[flow(userId,password,tracking.strip()) for tracking in trackings]
         loop = asyncio.get_event_loop()

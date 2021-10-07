@@ -1,4 +1,5 @@
 import requests
+import json
 from requests.structures import CaseInsensitiveDict
 
 
@@ -56,3 +57,15 @@ class Net:
 
         raise RequestsError('Unknown method: %s' % method)
 
+
+
+
+
+class JsonDict(dict):
+    """general json object that allows attributes to be bound to and also behaves like a dict"""
+
+    def __getattr__(self, attr):
+        return self.get(attr)
+
+    def __setattr__(self, attr, value):
+        self[attr] = value
