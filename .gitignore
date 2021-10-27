@@ -4,4 +4,5 @@ cat .gitignore
 */*/__pycache__
 */*/*/__pycache__
 tools/alibaba/login_cookies.py
+tools/workwx
 
